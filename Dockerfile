@@ -12,4 +12,4 @@ COPY entrypoint.sh /crawler/entrypoint.sh
 RUN chmod +x /crawler/entrypoint.sh
 WORKDIR /crawler
 
-CMD /bin/sh /crawler/entrypoint.sh
+CMD /crawler/entrypoint.sh
