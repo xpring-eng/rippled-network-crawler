@@ -9,6 +9,7 @@ FROM node:12-alpine
 RUN mkdir -p /crawler
 COPY --from=0 /scratch /crawler
 COPY entrypoint.sh /crawler/entrypoint.sh
+RUN chmod +x /crawler/entrypoint.sh
 WORKDIR /crawler
 
-CMD ["/bin/sh", "/crawler/entrypoint.sh"]
+CMD /bin/sh /crawler/entrypoint.sh
