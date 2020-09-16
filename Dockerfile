@@ -11,4 +11,4 @@ COPY --from=0 /scratch /crawler
 COPY entrypoint.sh /crawler/entrypoint.sh
 WORKDIR /crawler
 
-CMD ["/bin/sh", "entrypoint.sh"]
+CMD ["/bin/sh", "/crawler/entrypoint.sh"]
