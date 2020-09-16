@@ -39,8 +39,7 @@ const teardown = () => {
 };
 
 
-teardown()
-.then(setup)
+setup()
 .then(() => {
   console.log('done');
   process.exit(0);
