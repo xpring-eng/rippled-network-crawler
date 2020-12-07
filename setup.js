@@ -39,13 +39,26 @@ const teardown = () => {
 };
 
 
-teardown()
-.then(setup)
-.then(() => {
+if(config.get('reset_db')) {
+  teardown()
+  .then(setup)
+  .then(() => {
+    console.log('done');
+    process.exit(0);
+  })
+  .catch(e => {
+    console.log(e);
+    process.exit(1);
+  });
+} else {
+  setup()
+  .then(() => {
   console.log('done');
   process.exit(0);
-})
-.catch(e => {
-  console.log(e);
-  process.exit(1);
-});
+  })
+  .catch(e => {
+    console.log(e);
+    process.exit(1);
+  });
+}
+
