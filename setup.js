@@ -2,6 +2,10 @@ const config = require('./src/config');
 const knex = require('knex')(config.get('db'));
 
 const setup = () => {
+  if(knex.schema.hasTable('crawls') || knex.schema.hasTable('location')) {
+    console.log('dbs already exist')
+    return Promise.resolve(); 
+  }
   return knex.schema
   .createTable('crawls', t => {
     t.dateTime('start').primary();
