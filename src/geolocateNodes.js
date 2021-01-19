@@ -24,9 +24,10 @@ const upsert = async data => {
 const updateFromMaxmind = node => {
   const maxmind = config.get('maxmind');
 
-  const url = `https://'${maxmind.user}:${maxmind.key}@geoip.maxmind.com/geoip/v2.1/city/`;
+  const url = `https://${maxmind.user}:${maxmind.key}@geolite.info/geoip/v2.1/city/`; 
 
   return axios.get(`${url}${node.host}`)
+  .then(resp => resp.data)
   .then(resp => {
 
     const subdivision = resp.subdivisions ?
@@ -119,7 +120,7 @@ module.exports = () => {
       let query;
 
       if (node) {
-        query = config.maxmind ? updateFromMaxmind(node) : updateGeolocation(node);
+        query = config.get('maxmind') ? updateFromMaxmind(node) : updateGeolocation(node);
         return query.then(() => {
           return next();
         });
