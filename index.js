@@ -9,6 +9,7 @@ const log = require('./src/logger');
 
 const CRAWL_INTERVAL = 120 * 1000;
 const INTERVAL = 24 * 60 * 60 * 1000;
+const ONE_MINUTE = 1 * 60 * 1000;
 
 // geolocate nodes
 const geolocate = () => {
@@ -42,6 +43,7 @@ const purge = () => {
 };
 
 doCrawl();
+setTimeout(geolocate, ONE_MINUTE);
 setInterval(doCrawl, CRAWL_INTERVAL);
 setInterval(geolocate, INTERVAL);
 setInterval(purge, INTERVAL);
