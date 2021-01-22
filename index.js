@@ -43,7 +43,7 @@ const purge = () => {
 };
 
 doCrawl();
-setTimeout(geolocate, ONE_MINUTE)
+setTimeout(geolocate, ONE_MINUTE);
 setInterval(doCrawl, CRAWL_INTERVAL);
 setInterval(geolocate, INTERVAL);
 setInterval(purge, INTERVAL);
